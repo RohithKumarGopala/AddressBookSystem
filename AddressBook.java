@@ -83,7 +83,6 @@ public class AddressBook {
         }
         return indx;
     }
-
     public void editExistingContact(){
         System.out.println("Enter the name of the person whose details you "
                 + "want to be changed");
@@ -93,11 +92,22 @@ public class AddressBook {
         System.out.println("Found the name, Kindly enter new details ");
         ArrayList <String> contact = enterContactDetails();
         AddressBook.address_book.set(index, contact);
+        }
+    public void deleteExistingContact(){
+        System.out.println("Enter the name of the person whose details you "
+                + "want to be deleted");
+        Scanner sc = new Scanner(System.in);
+        String search_pers = sc.next();
+        // Fetch the index of person in address book
+        int index = searchExistingContact(search_pers);
+        // delete the details of person
+        AddressBook.address_book.remove(index);
     }
     public static void main(String []args) {
         System.out.println("Welcome to Address Book Program!");
         AddressBook addressbook = new AddressBook();
         addressbook.enterContactDetails();
         addressbook.editExistingContact();
+        addressbook.deleteExistingContact();
     }
 }
