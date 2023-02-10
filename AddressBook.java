@@ -67,9 +67,37 @@ public class AddressBook {
 
         return contact;
     }
+    public int searchExistingContact(String search_pers){
+        int indx = -1;
+        int temp_indx = -1;
+        for (ArrayList <String> i:AddressBook.address_book){
+            // find index of arraylist in which the given name is there
+            temp_indx ++;
+            for (String j:i){
+                // if name is found
+                if (j.equals(search_pers)){
+                    indx = temp_indx;
+                    break;
+                }
+            }
+        }
+        return indx;
+    }
+
+    public void editExistingContact(){
+        System.out.println("Enter the name of the person whose details you "
+                + "want to be changed");
+        Scanner sc = new Scanner(System.in);
+        String search_pers = sc.next();
+        int index = searchExistingContact(search_pers);
+        System.out.println("Found the name, Kindly enter new details ");
+        ArrayList <String> contact = enterContactDetails();
+        AddressBook.address_book.set(index, contact);
+    }
     public static void main(String []args) {
         System.out.println("Welcome to Address Book Program!");
         AddressBook addressbook = new AddressBook();
         addressbook.enterContactDetails();
+        addressbook.editExistingContact();
     }
 }
