@@ -103,11 +103,27 @@ public class AddressBook {
         // delete the details of person
         AddressBook.address_book.remove(index);
     }
+
+    public void addMultiplePerson(){
+
+        System.out.println("Enter the number of persons whose details you want " + "to add to the address book");
+
+        Scanner sc = new Scanner(System.in);
+
+        int no_of_person = sc.nextInt();
+
+        for (int i=1;i<=no_of_person;i++){
+            addContact();
+
+        }
+
+    }
     public static void main(String []args) {
         System.out.println("Welcome to Address Book Program!");
         AddressBook addressbook = new AddressBook();
         addressbook.enterContactDetails();
         addressbook.editExistingContact();
         addressbook.deleteExistingContact();
+        addressbook.addMultiplePerson();
     }
 }
